@@ -1,0 +1,50 @@
+<section class="categories">
+    <div class="container box-contain">
+        <div class="head">
+            <h4>Categories</h4>
+            <button class="btn btn-success" (click)="newProduct()">New</button>
+        </div>
+        <div class="bar-search">
+            <div class="form-group">
+                <button class="btn btn-info">Search</button>
+                <input class="form-control" type="text" placeholder="Search Text">
+            </div>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped table-hover">
+                <thead>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Date</th>
+                    <th>Total</th>
+                    <th>Image</th>
+                    <th>tools</th>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let product of listProduct">
+                        <td>{{product.ItemId}}</td>
+                        <td>{{product.ItemName}}</td>
+                        <td>{{product.ExpireDate}}</td>
+                        <td>{{product.Price}}</td>
+                        <td><img height="70" width="120" [src]="product.Photo" style="object-fit: cover;"></td>
+                        <td>
+                            <button class="btn btn-info" style="margin: 0 5px;">Edit</button>
+                            <button class="btn btn-danger" [swal]="deleteAlert">Delete</button>
+                            <swal #deleteAlert 
+                                title="Are you sure you want to Delete"
+                                [text]="product.ItemName"
+                                [allowOutsideClick]="false"
+                                [showCancelButton]="true"
+                                [showConfirmButton]="true"
+                                showCloseButton="true"
+                                confirmButtonText="Yes"
+                                cancelButtonText="No"
+                                (confirm)="deleteItem(product.ItemId)">
+                            </swal>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,38 @@
+.categories {
+    padding: 40px 0;
+}
+.box-contain {
+    border: 1px solid #e7ecf1;
+    padding: 12px 20px 15px 20px;
+    background-color: #fff;
+    box-shadow: 0px 2px 3px 2px rgba(0, 0, 0, 0.03);
+}
+.head {
+    padding: 10px 0;
+    border-bottom: 1px solid #e7ecf1;
+    margin: 10px 0;
+}
+.head h4 {
+    display: inline-block;
+    vertical-align: middle;
+    color: #79B0CE;
+    font-weight: bold;
+    margin:  0;
+}
+.head button {
+    margin: 0 20px;
+    vertical-align: middle;
+    padding: 5px 15px;
+}
+.bar-search {
+    padding: 10px 0;
+    text-align: right;
+}
+.bar-search input {
+    width: 35%;
+    display: inline-block;
+    vertical-align: middle;
+}
+.bar-search button {
+    margin: 0 15px;
+}
