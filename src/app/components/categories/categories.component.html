@@ -2,7 +2,7 @@
     <div class="container box-contain">
         <div class="head">
             <h4>Categories</h4>
-            <button class="btn btn-success" (click)="newProduct()">New</button>
+            <button class="btn btn-success" (click)="newProduct(false)">New</button>
         </div>
         <div class="bar-search">
             <div class="form-group">
@@ -24,11 +24,14 @@
                     <tr *ngFor="let product of listProduct">
                         <td>{{product.ItemId}}</td>
                         <td>{{product.ItemName}}</td>
-                        <td>{{product.ExpireDate}}</td>
+                        <td>{{product.ExpireDate | date:'yyyy-MM-dd'}}</td>
                         <td>{{product.Price}}</td>
-                        <td><img height="70" width="120" [src]="product.Photo" style="object-fit: cover;"></td>
                         <td>
-                            <button class="btn btn-info" style="margin: 0 5px;">Edit</button>
+                            <img class="product-img" *ngIf="! product.Photo" src="assets/image/noImage.png">
+                            <img class="product-img" *ngIf="product.Photo" [src]="product.Photo">
+                        </td>
+                        <td>
+                            <button class="btn btn-info" style="margin: 0 5px;" (click)="newProduct(product)">Edit</button>
                             <button class="btn btn-danger" [swal]="deleteAlert">Delete</button>
                             <swal #deleteAlert 
                                 title="Are you sure you want to Delete"

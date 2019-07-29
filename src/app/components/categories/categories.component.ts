@@ -33,7 +33,7 @@ export class CategoriesComponent implements OnInit {
 
     });
   }
-  newProduct() {
-    this.bsModalRef = this.modalService.show(ProductModalComponent);
+  newProduct(data) {
+    this.bsModalRef = this.modalService.show(ProductModalComponent, { initialState : { product: data }} );
   }
 }

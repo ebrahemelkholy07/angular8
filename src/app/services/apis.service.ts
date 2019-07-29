@@ -35,7 +35,8 @@ export class ApisService {
     });
   }
   uploadImage(image) {
-    return this.http.post(BaseUrl + 'UploadImage', image, {
+    return this.http.post(BaseUrl + 'UploadImage', image,
+    {
       headers: this.headers
     });
   }

@@ -1,50 +1,64 @@
-<div class="modal-header bg-defult-green">
-    <button type="button" class="close pull-right no-margin" aria-label="Close" (click)="bsModalRef.hide()">
-        <span aria-hidden="true">&times;</span>
-    </button>
-</div>
-<div class="modal-body">
-    <div class="row" *ngIf="errors" id="error">
-        <div dir="auto" class="alert alert-danger" *ngFor="let err of errors">
-        {{err}}
-        </div>
+<div class="new-item">
+    <div class="modal-header">
+        <h3>New Items</h3>
+        <button type="button" class="close pull-right no-margin" aria-label="Close" (click)="bsModalRef.hide()">
+            <span aria-hidden="true">&times;</span>
+        </button>
     </div>
-    <form #newProductForm="ngForm" (ngSubmit)="newProduct()" novalidate>
-        <div class="col-xs-12 p-0">
-            <div class="col-sm-6">
-                <div class="form-group">
-                    <label>Name</label>
-                    <input type="text" class="form-control" placeholder="Name" name="name" #ngnName="ngModel"
-                    [(ngModel)]="product.ItemName" required>
-                </div>
-            </div>
-            <div class="col-sm-6">
-                <div class="form-group">
-                    <label>Price</label>
-                    <input type="text" class="form-control" placeholder="Price" name="price" #ngPrice="ngModel"
-                    [(ngModel)]="product.Price" required>
-                </div>
+    <div class="modal-body">
+        <div class="row" *ngIf="errors" id="error">
+            <div dir="auto" class="alert alert-danger" *ngFor="let err of errors">
+            {{err}}
             </div>
         </div>
-        <div class="col-xs-12 p-0">
-            <div class="col-sm-6">
-                <div class="form-group">
-                    <label>Price</label>
-                    <input type="date" class="form-control" placeholder="Date" name="Date" #ngDate="ngModel"
-                    [(ngModel)]="product.date" required>
+        <form #newProductForm="ngForm" (ngSubmit)="newProduct()" novalidate>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <label>Name</label>
+                        <input type="text" class="form-control" placeholder="Name" name="name" #ngName="ngModel"
+                        [(ngModel)]="product.ItemName" required>
+                        <div *ngIf="ngName.invalid && checkValidation">
+                            <span class="required">This field is required</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <label>Price</label>
+                        <input type="text" class="form-control" placeholder="Price" name="price" #ngPrice="ngModel"
+                        [(ngModel)]="product.Price" required>
+                        <div *ngIf="ngPrice.invalid && checkValidation">
+                            <span class="required">This field is required</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <label>Price</label>
+                        <input type="date" class="form-control" placeholder="Date" name="Date"  #ngDate="ngModel"
+                        [(ngModel)]="product.ExpireDate" required>
+                        <div *ngIf="ngDate.invalid && checkValidation">
+                            <span class="required">This field is required</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <div class="image-upload">
+                        <label class="img-container" [ngClass]="{'imfShadow': product.Photo}">
+                            <img class="icon-upload" *ngIf="! product.Photo" src="assets/image/image-upload.png" height="120">
+                            <img *ngIf="product.Photo" [src]="product.Photo" class="profile-picture">
+                            <input name="profile_picture" type="file" accept="image/*" (change)="handleInputChange($event)">
+                        </label>
+                        <button class="btn btn-danger" *ngIf="product.Photo" (click)="product.Photo = ''">Delete</button>
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <div class="form-group text-center">
+                        <input type="submit" class="btn-submit btn btn-success">
+                    </div>
                 </div>
             </div>
-            <div class="col-sm-6">
-                <div class="form-group image-upload-container btn btn-bwm">
-                    <label>Image</label>
-                    <input #imageInput type="file" accept="image/*" (change)="processFile(imageInput)">
-                </div>
-            </div>
-            <div class="col-sm-6">
-                <div class="form-group">
-                    <input type="submit" class="form-control">
-                </div>
-            </div>
-        </div>
-    </form>
+        </form>
+    </div>
 </div>

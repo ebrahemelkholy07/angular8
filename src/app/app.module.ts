@@ -14,6 +14,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { ProductModalComponent } from './modals/product-modal/product-modal.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,9 @@ import { ModalModule } from 'ngx-bootstrap/modal';
   entryComponents: [
     ProductModalComponent
   ],
-  providers: [],
+  providers: [
+    DatePipe,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
